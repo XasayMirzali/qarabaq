@@ -1,0 +1,195 @@
+library(shiny)
+library(shinydashboard)
+library(leaflet)
+
+shinyServer(function(input, output, session){
+  
+  # First fluid row and first infoBox  
+  output$area <- renderInfoBox({
+    infoBox(title = "İşçi sayı", 
+            value = 1000,
+            icon = shiny::icon("user"),
+            fill = TRUE) 
+    
+  })
+  output$pop <- renderInfoBox({
+    infoBox(title = "Number of population:", 
+            value = 53000,
+            fill = TRUE) 
+    
+  })
+  output$xocmur <- renderInfoBox({
+    infoBox(title = "Number of murders ", 
+            value = 613,
+            fill = TRUE,color = "black") })
+  output$xocyar <- renderInfoBox({
+    infoBox(title = "Number of handicaps ", 
+            value = 657,
+            fill = TRUE,color = "red") })
+  output$susmur <- renderInfoBox({
+    infoBox(title = "Number of murders ", 
+            value = 193,
+            fill = TRUE,color = "black") })
+  output$susyar <- renderInfoBox({
+    infoBox(title = "Number of handicaps ", 
+            value = 102,
+            fill = TRUE,color = "red") })
+  output$lacmur <- renderInfoBox({
+    infoBox(title = "Number of murders ", 
+            value = 259,
+            fill = TRUE,color = "black") }) 
+  output$lacyar <- renderInfoBox({
+    infoBox(title = "Number of handicaps ", 
+            value = 225,
+            fill = TRUE,color = "red") }) 
+  output$xocamur <- renderInfoBox({
+    infoBox(title = "Number of murders ", 
+            value = 145,
+            fill = TRUE,color = "black") })
+  output$xocayar <- renderInfoBox({
+    infoBox(title = "Number of handicaps ", 
+            value = 48,
+            fill = TRUE,color = "red") }) 
+  output$kelmur <- renderInfoBox({
+    infoBox(title = "Number of murders ", 
+            value = 217,
+            fill = TRUE,color = "black") })
+  output$kelyar <- renderInfoBox({
+    infoBox(title = "Number of handicaps ", 
+            value = 49,
+            fill = TRUE,color = "red") })
+  output$agdmur <- renderInfoBox({
+    infoBox(title = "Territory ", 
+            value = 1705,
+            fill = TRUE) })
+  output$agdyar <- renderInfoBox({
+    infoBox(title = "Number of popoulation ", 
+            value = 44.4,
+            fill = TRUE) })
+  output$agmur <- renderInfoBox({
+    infoBox(title = "Number of murders ", 
+            value = 538,
+            fill = TRUE,color = "black") })
+  output$agyar <- renderInfoBox({
+    infoBox(title = "Number of handicaps ", 
+            value = 587,
+            fill = TRUE,color = "red") }) 
+  output$cebmur <- renderInfoBox({
+    infoBox(title = "Number of murders ", 
+            value = 347,
+            fill = TRUE,color = "black") })
+  output$cebyar <- renderInfoBox({
+    infoBox(title = "Number of handicaps ", 
+            value = 172,
+            fill = TRUE,color = "red") })
+  output$fuzmur <- renderInfoBox({
+    infoBox(title = "Number of murders ", 
+            value = 347,
+            fill = TRUE,color = "black") })
+  output$fuzyar <- renderInfoBox({
+    infoBox(title = "Number of handicaps ", 
+            value = 172,
+            fill = TRUE,color = "red") })
+  output$qubmur <- renderInfoBox({
+    infoBox(title = "Number of murders ", 
+            value = 232,
+            fill = TRUE,color = "black") }) 
+  output$qubyar <- renderInfoBox({
+    infoBox(title = "Number of handicaps ", 
+            value = 146,
+            fill = TRUE,color = "red") })
+  output$zengmur <- renderInfoBox({
+    infoBox(title = "Number of murders ", 
+            value = 191,
+            fill = TRUE,color = "black") })
+  output$zengyar <- renderInfoBox({
+    infoBox(title = "Number of handicaps ", 
+            value = 110,
+            fill = TRUE,color = "red") })
+  output$khan <- renderPlot({
+    
+ggmap(get_googlemap(c(46.7519, 39.8152),zoom = 14,maptype = "hybrid"))
+      #setView(46.457,39.4855,zoom = 8)%>%
+      #addTiles() %>%
+      #addMarkers(lng=46.7519, lat=39.8152, popup="Khankendi") %>%
+      #addMiniMap()
+  })
+  output$khocali <- renderLeaflet({
+    leaflet() %>%
+      setView(46.52,39.54,zoom = 8)%>%
+      addTiles() %>%
+      addMarkers(lng=46.86, lat=39.9, popup="Khocali") %>%
+      addMiniMap()
+  })
+  output$sus <- renderLeaflet({
+    leaflet() %>%
+      setView(50.13,40.49,zoom = 12)%>%
+      addTiles() %>%
+      addMarkers(lng=50.13, lat=40.49, popup="Mardakan: Avg.Salary 400 AZN") %>%
+      addMiniMap()
+  })
+  output$lac <- renderLeaflet({
+    leaflet() %>%
+      setView(46.3249,39.3827,zoom = 8)%>%
+      addTiles() %>%
+      addMarkers(lng=46.5249, lat=39.6827, popup="Lachin") %>%
+      addMiniMap()
+  })
+  output$khoc <- renderLeaflet({
+    leaflet() %>%
+      setView(47.0647,39.4743,zoom = 8)%>%
+      addTiles() %>%
+      addMarkers(lng=47.0647, lat=39.4743, popup="Khocavend") %>%
+      addMiniMap()
+  })
+  output$kal <- renderLeaflet({
+    leaflet() %>%
+      setView(46.1558,39.6942,zoom = 8)%>%
+      addTiles() %>%
+      addMarkers(lng=46.1558, lat=39.6942, popup="Kalbacar") %>%
+      addMiniMap()
+  })
+  output$agdere <- renderLeaflet({
+    leaflet() %>%
+      setView(46.4846,40.1255,zoom = 8)%>%
+      addTiles() %>%
+      addMarkers(lng=46.4846, lat=40.1255, popup="Agdere") %>%
+      addMiniMap()
+  })
+  output$agd <- renderLeaflet({
+    leaflet() %>%
+      setView(46.5550,39.5935,zoom = 8)%>%
+      addTiles() %>%
+      addMarkers(lng=46.5550, lat=39.5935, popup="Agdam") %>%
+      addMiniMap()
+  })
+  output$cab <- renderLeaflet({
+    leaflet() %>%
+      setView(47.0134,39.2400,zoom = 8)%>%
+      addTiles() %>%
+      addMarkers(lng=47.0134, lat=39.2400, popup="Jabrail") %>%
+      addMiniMap()
+  })
+  output$fiz <- renderLeaflet({
+    leaflet() %>%
+      setView(47.0835,39.6360,zoom = 8)%>%
+      addTiles() %>%
+      addMarkers(lng=47.1435, lat=39.6060, popup="Fizuli") %>%
+      addMiniMap()
+  })
+  output$qub <- renderLeaflet({
+    leaflet() %>%
+      setView(46.3447,39.2038,zoom = 8)%>%
+      addTiles() %>%
+      addMarkers(lng=46.5797, lat=39.3438, popup="Gubadly") %>%
+      addMiniMap()
+  })
+  output$zan <- renderLeaflet({
+    leaflet() %>%
+      setView(46.4149,39.0356,zoom = 1)%>%
+      addTiles() %>%
+      addMarkers(lng=46.6049, lat=39.0356, popup="Zangilan") %>%
+      addMiniMap()
+  })
+  
+})
