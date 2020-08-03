@@ -1,0 +1,91 @@
+## Intro shinydashboard package
+## dashboardSidebar - add menu items
+
+# install.packages("shinydashboard")
+
+# Load the required package
+
+library(shiny)
+library(shinydashboard)
+library(leaflet)
+
+shinyUI(
+  dashboardPage(skin = "red",
+    dashboardHeader(title = "Karabakh is Azerbaijan", titleWidth = 300),
+    
+    
+    dashboardSidebar(
+      # add menu items to the sidebar
+      # menu items are like tabs when clicked open up a page in tab item
+      sidebarMenu(
+        menuItem(text = "Xankəndi", tabName = "xan", icon=icon("sad-tear")),
+        menuItem(text="Xocalı", tabName = "xoc", icon=icon("sad-tear")),
+        menuItem(text = "Şuşa", tabName ="sus",   icon=icon("sad-tear")),
+        menuItem(text="Laçın",   tabName="lac",  icon=icon("sad-tear")),
+        menuItem(text="Xocavənd", tabName ="xoca",   icon=icon("sad-tear")),
+        menuItem(text="Kəlbəcər", tabName = "kel",  icon=icon("sad-tear")),
+        menuItem(text="Ağdərə",  tabName ="agd",  icon=icon("sad-tear")),
+        menuItem(text="Ağdam",  tabName = "ag", icon=icon("sad-tear")),
+        menuItem(text="Cəbrayıl", tabName ="ceb",   icon=icon("sad-tear")),
+        menuItem(text="Füzuli", tabName = "fuz",  icon=icon("sad-tear")),
+        menuItem(text="Qubadlı", tabName ="qub",   icon=icon("sad-tear")),
+        menuItem(text="Zəngilan", tabName = "zeng",  icon=icon("sad-tear")),
+        menuItem(text="Author", tabName = "aut",  icon=icon("user-circle"))
+        
+        
+        # https://fontawesome.com/icons?d=gallery
+      )
+    ),
+    
+    
+    
+    dashboardBody(
+      tabItems(
+        tabItem(
+          tabName = "xan",h4("Occupied: 26 December 1991"),
+          fluidRow(infoBoxOutput("area", width = 3),infoBoxOutput("pop", width = 3)),tags$img(src="tovuz.jpg",width = "100px", height = "100px"),tags$img(src="socar.png",width = "200px", height = "200px"),
+          plotOutput("khan")),
+        tabItem(tabName = "xoc",h1("Occupied: 26 February 1992"),
+          fluidRow(infoBoxOutput("xocmur", width = 3),infoBoxOutput("xocyar", width = 3)),
+          fluidPage(leafletOutput("khocali"))),
+        tabItem(tabName = "sus",h1("Occupied: 8 May 1992"),
+                fluidRow(infoBoxOutput("susmur", width = 3),infoBoxOutput("susyar", width = 3)),
+                fluidPage(leafletOutput("sus"))),
+        tabItem(tabName = "lac",h1("Occupied: 18 May 1992"),
+                fluidRow(infoBoxOutput("lacmur", width = 3),infoBoxOutput("lacyar", width = 3)),
+                fluidPage(leafletOutput("lac"))),
+        tabItem(tabName = "xoca",h1("Occupied: 2 October 1992"),
+                fluidRow(infoBoxOutput("xocamur", width = 3),infoBoxOutput("xocayar", width = 3)),
+                fluidPage(leafletOutput("khoc"))),
+        tabItem(tabName = "kel",h1("Occupied: 2 April 1993"),
+                fluidRow(infoBoxOutput("kelmur", width = 3),infoBoxOutput("kelyar", width = 3)),
+                fluidPage(leafletOutput("kal"))),
+        tabItem(tabName = "agd",h1("Occupied: 7 July 1993"),
+                fluidRow(infoBoxOutput("agdmur", width = 3),infoBoxOutput("agdyar", width = 3)),
+                fluidPage(leafletOutput("agdere"))),
+        tabItem(tabName = "ag",h1("Occupied: 23 July 1993 "),
+                fluidRow(infoBoxOutput("agmur", width = 3),infoBoxOutput("agyar", width = 3)),
+                fluidPage(leafletOutput("agd"))),
+        tabItem(tabName = "ceb",h1("Occupied: 23 August 1993"),
+                fluidRow(infoBoxOutput("cebmur", width = 3),infoBoxOutput("cebyar", width = 3)),
+                fluidPage(leafletOutput("cab"))),
+        tabItem(tabName = "fuz",h1("Occupied: 23 August 1993"),
+                fluidRow(infoBoxOutput("fuzmur", width = 3),infoBoxOutput("fuzyar", width = 3)),
+                fluidPage(leafletOutput("fiz"))),
+        tabItem(tabName = "qub",h1("Occupied: 31 August 1993"),
+                fluidRow(infoBoxOutput("qubmur", width = 3),infoBoxOutput("qubyar", width = 3)),
+                fluidPage(leafletOutput("qub"))),
+        tabItem(tabName = "zeng",h1("Occupied: 29 October 1993"),
+                fluidRow(infoBoxOutput("zengmur", width = 3),infoBoxOutput("zengyar", width = 3)),
+                fluidPage(leafletOutput("zan"))),
+        tabItem(tabName = "aut",h3("My name is Khasay Mirzali. I am from Azerbaijan. I studied Computer engineering at Azerbaijan State Oil and Industry University. If you have any question you can contact me via xasay37@gmail.com e-adress."),)
+        
+        
+        
+        
+        )
+      )
+      
+    )
+  )
+
